@@ -1,0 +1,25 @@
+# paths
+LIB = ../lib
+INCLUDE = ../include
+
+# Compile options. Το -I<dir> λέει στον compiler να αναζητήσει εκεί include files
+CFLAGS = -Wall -Werror -g -I$(INCLUDE)
+LDFLAGS = -lm
+
+# Αρχεία .o
+OBJS = sample_test.o
+
+# Το εκτελέσιμο πρόγραμμα
+EXEC = sample_test
+
+# Παράμετροι για δοκιμαστική εκτέλεση
+ARGS =
+
+$(EXEC): $(OBJS)
+	gcc $(OBJS) -o $(EXEC) $(LDFLAGS)
+
+clean:
+	rm -f $(OBJS) $(EXEC)
+
+run: $(EXEC)
+	./$(EXEC) $(ARGS)
