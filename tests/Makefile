@@ -2,6 +2,9 @@
 LIB = ../lib
 INCLUDE = ../include
 
+# compiler
+CC = gcc
+
 # Compile options. Το -I<dir> λέει στον compiler να αναζητήσει εκεί include files
 CFLAGS = -Wall -Werror -g -I$(INCLUDE)
 LDFLAGS = -lm
@@ -16,7 +19,7 @@ EXEC = sample_test
 ARGS =
 
 $(EXEC): $(OBJS)
-	gcc $(OBJS) -o $(EXEC) $(LDFLAGS)
+	$(CC) $(OBJS) -o $(EXEC) $(LDFLAGS)
 
 clean:
 	rm -f $(OBJS) $(EXEC)
