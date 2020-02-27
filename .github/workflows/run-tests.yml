@@ -12,9 +12,3 @@ jobs:
 
     - name: make run
       run: make run
-
-    - name: Upload
-      uses: actions/upload-artifact@master
-      with:
-        name: compiled-${{ matrix.os }}
-        path: .
