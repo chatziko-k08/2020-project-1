@@ -32,22 +32,27 @@ typedef struct list_node* ListNode;
 
 List list_create(DestroyFunc destroy_value);
 
-// Επιστρέψει τον αριθμό στοιχείων που περιέχει η λίστα.
+// Επιστρέφει τον αριθμό στοιχείων που περιέχει η λίστα.
 
 int list_size(List list);
 
 // Προσθέτει έναν νέο κόμβο __μετά__ τον node, ή στην αρχή αν node == LIST_BOF, με περιεχόμενο value.
 
-void list_insert(List list, ListNode node, Pointer value);
+void list_insert_next(List list, ListNode node, Pointer value);
 
 // Αφαιρεί τον __επόμενο__ κόμβο από τον node, ή τον πρώτο κόμβο αν node == LIST_BOF, και επιστρέφει την τιμή που περιείχε.
 
-Pointer list_remove(List list, ListNode node);
+Pointer list_remove_next(List list, ListNode node);
 
 // Επιστρέφει την πρώτη τιμή που είναι ισοδύναμη με value
 // (με βάση τη συνάρτηση compare), ή NULL αν δεν υπάρχει
 
 Pointer list_find(List list, Pointer value, CompareFunc compare);
+
+// Αλλάζει τη συνάρτηση που καλείται σε κάθε αφαίρεση/αντικατάσταση στοιχείου σε
+// destroy_value. Επιστρέφει την προηγούμενη τιμή της συνάρτησης.
+
+DestroyFunc list_set_destroy_value(List list, DestroyFunc destroy_value);
 
 // Ελευθερώνει όλη τη μνήμη που δεσμεύει η λίστα list.
 // Οποιαδήποτε λειτουργία πάνω στη λίστα μετά το destroy είναι μη ορισμένη.

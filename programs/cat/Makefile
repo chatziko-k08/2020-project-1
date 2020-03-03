@@ -10,7 +10,7 @@ CFLAGS = -Wall -Werror -g -I$(INCLUDE)
 LDFLAGS = -lm
 
 # Αρχεία .o
-OBJS = cat.o io.o $(LIB)/k08.a $(LIB)/libbmp.a
+OBJS = cat.o io.o $(LIB)/k08.a
 
 # Το εκτελέσιμο πρόγραμμα
 EXEC = cat
@@ -24,10 +24,6 @@ $(EXEC): $(OBJS)
 # Για να φτιάξουμε το k08.a, τρέχουμε το make στο lib directory.
 $(LIB)/k08.a:
 	$(MAKE) -C $(LIB) k08.a
-
-# το ίδιο για το libbmp.a
-$(LIB)/libbmp.a:
-	$(MAKE) -C $(LIB) libbmp.a
 
 clean:
 	rm -f $(OBJS) $(EXEC)

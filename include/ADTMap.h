@@ -46,6 +46,12 @@ Pointer map_remove(Map map, Pointer key);
 
 Pointer map_find(Map map, Pointer key);
 
+// Αλλάζει τη συνάρτηση που καλείται σε κάθε αφαίρεση/αντικατάσταση key/value.
+// Επιστρέφει την προηγούμενη τιμή της συνάρτησης.
+
+DestroyFunc map_set_destroy_key  (Map map, DestroyFunc destroy_key  );
+DestroyFunc map_set_destroy_value(Map map, DestroyFunc destroy_value);
+
 // Ελευθερώνει όλη τη μνήμη που δεσμεύει το map.
 // Οποιαδήποτε λειτουργία πάνω στο map μετά το destroy είναι μη ορισμένη.
 
@@ -88,13 +94,13 @@ MapNode map_find_node(Map map, Pointer key);
 
 // Τύπος συνάρτησης κατακερματισμού
 
-typedef int (*HashFunc)(const Pointer);
+typedef uint (*HashFunc)(Pointer);
 
 // Υλοποιημένες συναρτήσεις κατακερματισμού για συχνούς τύπους δεδομένων
 
-int hash_string(const Pointer value);		// Χρήση όταν το key είναι char*
-int hash_int(const Pointer value);			// Χρήση όταν το key είναι int*
-int hash_pointer(const Pointer value);		// Χρήση όταν το key είναι pointer που θεωρείται διαφορετικός από οποιονδήποτε άλλο pointer
+uint hash_string(Pointer value);		// Χρήση όταν το key είναι char*
+uint hash_int(Pointer value);			// Χρήση όταν το key είναι int*
+uint hash_pointer(Pointer value);		// Χρήση όταν το key είναι pointer που θεωρείται διαφορετικός από οποιονδήποτε άλλο pointer
 
 // Ορίζει τη συνάρτηση κατακερματισμού hash για το συγκεκριμένο map
 // Πρέπει να κληθεί μετά την map_create και πριν από οποιαδήποτε άλλη συνάρτηση.

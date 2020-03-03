@@ -26,7 +26,7 @@ typedef struct stack* Stack;
 
 Stack stack_create(DestroyFunc destroy_value);
 
-// Επιστρέψει τον αριθμό στοιχείων που περιέχει η στοίβα stack
+// Επιστρέφει τον αριθμό στοιχείων που περιέχει η στοίβα stack
 
 int stack_size(Stack stack);
 
@@ -36,11 +36,16 @@ Pointer stack_top(Stack stack);
 
 // Προσθέτει την τιμή value στην κορυφή της στοίβας stack.
 
-void stack_insert(Stack stack, Pointer value);
+void stack_insert_top(Stack stack, Pointer value);
 
 // Αφαιρεί και επιστρέφει  την τιμή στην κορυφή της στοίβας (μη ορισμένο αποτέλεσμα αν η στοίβα είναι κενή)
 
-Pointer stack_remove(Stack stack);
+Pointer stack_remove_top(Stack stack);
+
+// Αλλάζει τη συνάρτηση που καλείται σε κάθε αφαίρεση/αντικατάσταση στοιχείου σε
+// destroy_value. Επιστρέφει την προηγούμενη τιμή της συνάρτησης.
+
+DestroyFunc stack_set_destroy_value(Stack stack, DestroyFunc destroy_value);
 
 // Ελευθερώνει όλη τη μνήμη που δεσμεύει η στοιβα stack.
 // Οποιαδήποτε λειτουργία πάνω στη στοίβα μετά το destroy είναι μη ορισμένη.

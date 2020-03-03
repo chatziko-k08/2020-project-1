@@ -26,21 +26,30 @@ typedef struct queue* Queue;
 
 Queue queue_create(DestroyFunc destroy_value);
 
-// Επιστρέψει τον αριθμό στοιχείων που περιέχει η ουρά queue
+// Επιστρέφει τον αριθμό στοιχείων που περιέχει η ουρά queue
 
 int queue_size(Queue queue);
 
-// Επιστρέφει το στοιχείο στην κορυφή της ουράς (μη ορισμένο αποτέλεσμα αν η ουρά είναι κενή)
+// Επιστρέφει το στοιχείο στο μπροστινό μέρος της ουράς (μη ορισμένο αποτέλεσμα αν η ουρά είναι κενή)
 
-Pointer queue_top(Queue queue);
+Pointer queue_front(Queue queue);
 
-// Προσθέτει την τιμή value στo τέλος της ουράς queue.
+// Επιστρέφει το στοιχείο στο πίσω μέρος της ουράς (μη ορισμένο αποτέλεσμα αν η ουρά είναι κενή)
 
-void queue_insert(Queue queue, Pointer value);
+Pointer queue_back(Queue queue);
 
-// Αφαιρεί και επιστρέφει  την τιμή στην κορυφή της ουράς (μη ορισμένο αποτέλεσμα αν η ουρά είναι κενή)
+// Προσθέτει την τιμή value στo πίσω μέρος της ουράς queue.
 
-Pointer queue_remove(Queue queue);
+void queue_insert_back(Queue queue, Pointer value);
+
+// Αφαιρεί και επιστρέφει την τιμή στο μπροστά μέρος της ουράς (μη ορισμένο αποτέλεσμα αν η ουρά είναι κενή)
+
+Pointer queue_remove_front(Queue queue);
+
+// Αλλάζει τη συνάρτηση που καλείται σε κάθε αφαίρεση/αντικατάσταση στοιχείου σε
+// destroy_value. Επιστρέφει την προηγούμενη τιμή της συνάρτησης.
+
+DestroyFunc queue_set_destroy_value(Queue queue, DestroyFunc destroy_value);
 
 // Ελευθερώνει όλη τη μνήμη που δεσμεύει η ουρά queue.
 // Οποιαδήποτε λειτουργία πάνω στη ουρά μετά το destroy είναι μη ορισμένη.

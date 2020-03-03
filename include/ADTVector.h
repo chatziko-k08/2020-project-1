@@ -30,22 +30,22 @@ typedef struct vector* Vector;
 
 Vector vector_create(int size, DestroyFunc destroy_value);
 
-// Επιστρέψει τον αριθμό στοιχείων που περιέχει το vector vec.
+// Επιστρέφει τον αριθμό στοιχείων που περιέχει το vector vec.
 
 int vector_size(Vector vec);
 
 // Προσθέτει την τιμή value στο _τέλος_ του vector vec. Το μέγεθος του vector μεγαλώνει κατά 1.
 // Αν δεν υπάρχει διαθέσιμη μνήμη το vector παραμένει όπως ήταν (αυτό μπορεί να ελεγχθεί με τη vector_size)
 
-void vector_insert(Vector vec, Pointer value);
+void vector_insert_last(Vector vec, Pointer value);
 
 // Αφαιρεί και επιστρέφει  την τιμή της τελευταίας θέσης του vector.
 // Το μέγεθος του vector μικραίνει κατά 1.
 // Αν size == 0 επιστρέφει NULL.
 
-Pointer vector_remove(Vector vec);
+Pointer vector_remove_last(Vector vec);
 
-// Επιστρέφει την τιμή στη θέση pos του vector vec, ή NULL αν pos < 0 ή pos >= size.
+// Επιστρέφει την τιμή στη θέση pos του vector vec (μη ορισμένο αποτέλεσμα αν pos < 0 ή pos >= size)
 
 Pointer vector_get_at(Vector vec, int pos);
 
@@ -58,6 +58,11 @@ void vector_set_at(Vector vec, int pos, Pointer value);
 // (με βάση τη συνάρτηση compare), ή NULL αν δεν βρεθεί κανένα στοιχείο.
 
 Pointer vector_find(Vector vec, Pointer value, CompareFunc compare);
+
+// Αλλάζει τη συνάρτηση που καλείται σε κάθε αφαίρεση/αντικατάσταση στοιχείου σε
+// destroy_value. Επιστρέφει την προηγούμενη τιμή της συνάρτησης.
+
+DestroyFunc vector_set_destroy_value(Vector vec, DestroyFunc destroy_value);
 
 // Ελευθερώνει όλη τη μνήμη που δεσμεύει το vector vec.
 // Οποιαδήποτε λειτουργία πάνω στο vector μετά το destroy είναι μη ορισμένη.

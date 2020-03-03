@@ -5,7 +5,7 @@
 # το οποίο είναι ισοδύναμο με το να τρέξουμε make <target> μέσα στο directory <foo>
 
 # Ολα τα directories μέσα στο programs directory
-PROGRAMS = $(shell ls programs/)
+PROGRAMS = $(subst programs/, , $(wildcard programs/*))
 
 # Compile: όλα, προγράμματα, tests
 all: programs tests
