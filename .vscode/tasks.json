@@ -34,6 +34,10 @@
 				"${config:c_project.arg4}",
 				"${config:c_project.arg5}",
 				"${config:c_project.arg6}",
+				"${config:c_project.arg7}",
+				"${config:c_project.arg8}",
+				"${config:c_project.arg9}",
+				"${config:c_project.arg10}",
 			],
 			"options": {
 				"cwd": "${workspaceRoot}/${config:c_project.dir}"
