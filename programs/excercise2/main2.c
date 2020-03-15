@@ -4,7 +4,7 @@
 
 int main(void) {
     int lines;
-    Map m = get_occurences_map("../../misc/words/words-10", &lines);
+    Map m = get_occurences_map("../../misc/words/words-100000", &lines);
 
     MapNode n;
     n = map_first(m);
