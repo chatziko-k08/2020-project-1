@@ -16,6 +16,10 @@ int main(int argc, char *argv[]) {
 	GIF* gif = gif_create(size, size);
 	Bitmap* bitmap = bm_create(size, size);
 
+	// Ορίζουμε τα χρώματα που χρησιμοποιούνται στο GIF (αλλιώς παίρνει αυτά που υπάρχουν στο πρώτο frame)
+	unsigned int palette[] = { 0xFF000000, 0xFFFFFFFF }; // black, white
+	gif_set_palette(gif, palette, 2);
+
 	// Default καθυστέρηση μεταξύ των frames, σε εκατοστά του δευτερολέπτου
 	gif->default_delay = 10;
 
