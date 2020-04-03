@@ -33,9 +33,9 @@ int main(int argc, char *argv[]) {
 		bm_clear(bitmap);
 
 		// Και μετά ζωγραφίζουμε ένα άσπρο τετράγωνο με αρχή το
-		// σημείο (i,i) και τέλος το (i+cell_size, i+cell_size)
+		// σημείο (i,i) και τέλος το (i+cell_size-1, i+cell_size-1)
 		bm_set_color(bitmap, bm_atoi("white"));
-		bm_fillrect(bitmap, i, i, i+cell_size, i+cell_size);
+		bm_fillrect(bitmap, i, i, i+cell_size-1, i+cell_size-1);
    
 		// Τέλος προσθέτουμε το bitmap σαν frame στο GIF (τα περιεχόμενα αντιγράφονται)
 		gif_add_frame(gif, bitmap);
